@@ -178,8 +178,13 @@ public class MyLinkedList<T> implements MyLinkedListInterface<T> {
                 } else if (nextNode.item == null && element == null) {
                     return nextNode;
                 }
-                nextNode = nextNode.next;
-            } while (nextNode.next != null);
+                if (nextNode.next != null) {
+                    nextNode = nextNode.next;
+                } else {
+                    nextNode = null;
+                }
+
+            } while (nextNode != null);
 
         } catch (Exception e) {
             throw new NullPointerException("Item node`s is null");
